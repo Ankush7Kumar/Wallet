@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+
+    <persistence-unit name="laasi">
+        <!-- PersistenceContext Name -->
+        <description> Hibernate JPA Configuration Example</description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <properties>
+            <!--
+                <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
+         <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe" />  -->
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+
+
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/wallets" />
+
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="ucantcme" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <!-- create, update, drop -->
+            <property name="hibernate.format_sql" value="true"/>
+            <!-- it should not exceed my console window  -->
+        </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="default">
+    </persistence-unit>
+</persistence>

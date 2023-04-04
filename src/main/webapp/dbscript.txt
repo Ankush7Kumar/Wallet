@@ -1,0 +1,91 @@
+--------------------------------------------------------
+--  File created - Saturday-September-10-2022   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table ACCOUNT
+--------------------------------------------------------
+
+  CREATE TABLE "ACCOUNT" ("ACCOUNTNUMBER" NUMBER(10,0), "CUSTOMERID" NUMBER(4,0), "ACCOUNTTYPE" VARCHAR2(20), "OPENINGBALANCE" NUMBER(15,0), "DESCRIPTION" VARCHAR2(200), "OPENINGDATE" DATE)
+--------------------------------------------------------
+--  DDL for Table ADDRESS
+--------------------------------------------------------
+
+  CREATE TABLE "ADDRESS" ("ADDRESSID" NUMBER(4,0), "ADDRESSLINE1" VARCHAR2(200), "ADDRESSLINE2" VARCHAR2(200), "CITY" VARCHAR2(20), "STATE" VARCHAR2(20), "PINCODE" VARCHAR2(20))
+--------------------------------------------------------
+--  DDL for Table CUSTOMER
+--------------------------------------------------------
+
+  CREATE TABLE "CUSTOMER" ("CUSTOMERID" NUMBER(4,0), "FIRSTNAME" VARCHAR2(20), "LASTNAME" VARCHAR2(20), "EMAILID" VARCHAR2(20), "CONTACTNO" VARCHAR2(20), "ADDRESSID" NUMBER(4,0), "GENDER" VARCHAR2(20), "PWD" VARCHAR2(20), "REGISTERATIONDATE" DATE)
+--------------------------------------------------------
+--  DDL for Table TRANSACTION
+--------------------------------------------------------
+
+  CREATE TABLE "TRANSACTION" ("TRANSACTIONID" NUMBER(4,0), "TRANSACTIONTYPE" VARCHAR2(20), "TRANSACTIONDATE" DATE, "AMOUNT" NUMBER(8,0), "DESCRIPTION" VARCHAR2(200), "FROMACCOUNT" NUMBER(10,0), "TOACCOUNT" NUMBER(10,0))
+REM INSERTING into ACCOUNT
+SET DEFINE OFF;
+Insert into ACCOUNT (ACCOUNTNUMBER,CUSTOMERID,ACCOUNTTYPE,OPENINGBALANCE,DESCRIPTION,OPENINGDATE) values (1,1,'SAVINGS',-106,'desc',to_date('07-09-22','DD-MM-RR'));
+Insert into ACCOUNT (ACCOUNTNUMBER,CUSTOMERID,ACCOUNTTYPE,OPENINGBALANCE,DESCRIPTION,OPENINGDATE) values (2,1,'CURRENT',101,'desc',to_date('08-09-22','DD-MM-RR'));
+Insert into ACCOUNT (ACCOUNTNUMBER,CUSTOMERID,ACCOUNTTYPE,OPENINGBALANCE,DESCRIPTION,OPENINGDATE) values (3,1,'RD',100,'desc',to_date('08-09-22','DD-MM-RR'));
+Insert into ACCOUNT (ACCOUNTNUMBER,CUSTOMERID,ACCOUNTTYPE,OPENINGBALANCE,DESCRIPTION,OPENINGDATE) values (4,1,'SAVINGS',753,'desc',to_date('10-09-22','DD-MM-RR'));
+REM INSERTING into ADDRESS
+SET DEFINE OFF;
+Insert into ADDRESS (ADDRESSID,ADDRESSLINE1,ADDRESSLINE2,CITY,STATE,PINCODE) values (1,'delhi','sec 2345','delhi','Haryana','46587');
+REM INSERTING into CUSTOMER
+SET DEFINE OFF;
+Insert into CUSTOMER (CUSTOMERID,FIRSTNAME,LASTNAME,EMAILID,CONTACTNO,ADDRESSID,GENDER,PWD,REGISTERATIONDATE) values (1,'sohan','kumar','sk@gmail.com','987654321',1,'Male','1234',to_date('07-09-22','DD-MM-RR'));
+REM INSERTING into TRANSACTION
+SET DEFINE OFF;
+Insert into TRANSACTION (TRANSACTIONID,TRANSACTIONTYPE,TRANSACTIONDATE,AMOUNT,DESCRIPTION,FROMACCOUNT,TOACCOUNT) values (3,'CREDIT',to_date('10-09-22','DD-MM-RR'),50,'desc',4,4);
+Insert into TRANSACTION (TRANSACTIONID,TRANSACTIONTYPE,TRANSACTIONDATE,AMOUNT,DESCRIPTION,FROMACCOUNT,TOACCOUNT) values (4,'DEBIT',to_date('10-09-22','DD-MM-RR'),2,'desc',4,4);
+Insert into TRANSACTION (TRANSACTIONID,TRANSACTIONTYPE,TRANSACTIONDATE,AMOUNT,DESCRIPTION,FROMACCOUNT,TOACCOUNT) values (1,'CREDIT',to_date('09-09-22','DD-MM-RR'),1,'desc',1,2);
+Insert into TRANSACTION (TRANSACTIONID,TRANSACTIONTYPE,TRANSACTIONDATE,AMOUNT,DESCRIPTION,FROMACCOUNT,TOACCOUNT) values (2,'DEBIT',to_date('09-09-22','DD-MM-RR'),1,'desc',1,2);
+Insert into TRANSACTION (TRANSACTIONID,TRANSACTIONTYPE,TRANSACTIONDATE,AMOUNT,DESCRIPTION,FROMACCOUNT,TOACCOUNT) values (5,'CREDIT',to_date('10-09-22','DD-MM-RR'),5,'desc',1,4);
+Insert into TRANSACTION (TRANSACTIONID,TRANSACTIONTYPE,TRANSACTIONDATE,AMOUNT,DESCRIPTION,FROMACCOUNT,TOACCOUNT) values (6,'DEBIT',to_date('10-09-22','DD-MM-RR'),5,'desc',1,4);
+Insert into TRANSACTION (TRANSACTIONID,TRANSACTIONTYPE,TRANSACTIONDATE,AMOUNT,DESCRIPTION,FROMACCOUNT,TOACCOUNT) values (7,'CREDIT',to_date('10-09-22','DD-MM-RR'),200,'44',1,4);
+Insert into TRANSACTION (TRANSACTIONID,TRANSACTIONTYPE,TRANSACTIONDATE,AMOUNT,DESCRIPTION,FROMACCOUNT,TOACCOUNT) values (8,'DEBIT',to_date('10-09-22','DD-MM-RR'),200,'44',1,4);
+--------------------------------------------------------
+--  DDL for Index SYS_C008208
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C008208" ON "ACCOUNT" ("ACCOUNTNUMBER")
+--------------------------------------------------------
+--  DDL for Index SYS_C008204
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C008204" ON "ADDRESS" ("ADDRESSID")
+--------------------------------------------------------
+--  DDL for Index SYS_C008205
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C008205" ON "CUSTOMER" ("CUSTOMERID")
+--------------------------------------------------------
+--  DDL for Index SYS_C008206
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C008206" ON "CUSTOMER" ("EMAILID")
+--------------------------------------------------------
+--  DDL for Index SYS_C008210
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C008210" ON "TRANSACTION" ("TRANSACTIONID")
+--------------------------------------------------------
+--  Constraints for Table ACCOUNT
+--------------------------------------------------------
+
+  ALTER TABLE "ACCOUNT" ADD PRIMARY KEY ("ACCOUNTNUMBER") ENABLE
+--------------------------------------------------------
+--  Constraints for Table ADDRESS
+--------------------------------------------------------
+
+  ALTER TABLE "ADDRESS" ADD PRIMARY KEY ("ADDRESSID") ENABLE
+--------------------------------------------------------
+--  Constraints for Table CUSTOMER
+--------------------------------------------------------
+
+  ALTER TABLE "CUSTOMER" ADD UNIQUE ("EMAILID") ENABLE
+  ALTER TABLE "CUSTOMER" ADD PRIMARY KEY ("CUSTOMERID") ENABLE
+--------------------------------------------------------
+--  Constraints for Table TRANSACTION
+--------------------------------------------------------
+
+  ALTER TABLE "TRANSACTION" ADD PRIMARY KEY ("TRANSACTIONID") ENABLE
